@@ -1,0 +1,97 @@
+================================================================================
+  THE NEBULA — Coming Soon HTML Template
+  Envato Market License Agreement
+================================================================================
+
+  Item:       The Nebula — Ultra-High-End Glassmorphism Coming Soon Template
+  Version:    2.0.0
+  Author:     Diamondz Technologiez
+  Item URL:   https://themeforest.net/
+  Created:    2025
+  Last Update: 2026
+
+================================================================================
+  REGULAR LICENSE
+================================================================================
+
+  The Regular License grants you an ongoing, non-exclusive, worldwide license
+  to make use of the item you have purchased ("Item").
+
+  You are licensed to use the Item to create one End Product for yourself or
+  for one client (a "single application"), and the End Product can be
+  distributed for Free.
+
+  An End Product is one of the following things, both requiring an
+  application of skill and effort:
+
+  (a) For an Item that is a template, the End Product is a customised
+      implementation of the Item. For example, the item is a website
+      template and the end product is the final website customised and
+      deployed for a client.
+
+  (b) For other types of Item, an End Product is a work that incorporates
+      the Item as well as other things, so that it is larger in scope and
+      different in nature than the Item.
+
+  You can create one End Product for a client, and you can transfer that
+  single End Product to your client for any fee. This license is then
+  transferred to your client.
+
+================================================================================
+  EXTENDED LICENSE
+================================================================================
+
+  The Extended License grants you an ongoing, non-exclusive, worldwide license
+  to make use of the Item you have purchased from Envato Market ("Item").
+
+  You are licensed to use the Item to create one End Product for yourself or
+  for one client (a "single application"), and the End Product can be
+  distributed for sale.
+
+  An End Product is one of the following things:
+
+  (a) For an Item that is a template, the End Product is a customised
+      implementation of the Item.
+
+================================================================================
+  THIRD-PARTY RESOURCES
+================================================================================
+
+  The following third-party resources are used in this template. Please review
+  their individual licenses for terms of use:
+
+  Google Fonts — Inter, Montserrat
+  License: SIL Open Font License 1.1
+  URL: https://fonts.google.com/
+
+  Social Media Icons (SVG paths)
+  These icons are brand property of their respective copyright holders
+  (X Corp, Meta Platforms, LinkedIn Corp, GitHub Inc, Google LLC).
+  Used in accordance with each platform's branding guidelines.
+
+================================================================================
+  RESTRICTIONS
+================================================================================
+
+  You cannot redistribute the Item as stock, in a tool or template, or with
+  source files. You cannot do this with an Item either on its own or bundled
+  with other items and even if you modify the Item. You cannot re-distribute
+  or re-sell this item or its derivatives.
+
+================================================================================
+  SUPPORT
+================================================================================
+
+  For support, customisation requests, or queries, contact the author
+  via the Envato Market profile page.
+
+================================================================================
+  FULL ENVATO MARKET LICENSE TERMS
+================================================================================
+
+  For the complete Envato Market License, please visit:
+  https://themeforest.net/licenses/standard
+
+================================================================================
+  © 2026 Diamondz Technologiez. All rights reserved.
+================================================================================

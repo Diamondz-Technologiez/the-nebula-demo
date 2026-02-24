@@ -1,0 +1,1199 @@
+/*
+ * ============================================================
+ *   THE NEBULA — Core Stylesheet
+ *   Version  : 2.0.0
+ *   Author   : Diamondz Technologiez
+ *   License  : Envato Regular / Extended License
+ *
+ *   Architecture : BEM (Block__Element--Modifier)
+ *   Methodology  : CSS Custom Properties + body.theme-N class system
+ *
+ *   Sections:
+ *     01. CSS Reset & Base
+ *     02. Utility Classes
+ *     03. 12 Galactic Mood Palettes (body.theme-N)
+ *     04. Nebula Background Layers
+ *     05. Anti-Gravity Field (Orbs & Geometry)
+ *     06. Page Layout
+ *     07. Glass Card
+ *     08. Brand / Logo
+ *     09. Typography (Glass-text, Headline, Caption)
+ *     10. Countdown Timer
+ *     11. Subscribe Form
+ *     12. Social Icons
+ *     13. Glass Card Footer
+ *     14. Gear Theme Switcher
+ * ============================================================
+ */
+
+/* =========================================
+   01. CSS RESET & BASE
+   ========================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--clr-text);
+    /* Smooth palette transitions when switching themes */
+    transition: color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+}
+
+/* =========================================
+   02. UTILITY CLASSES
+   ========================================= */
+
+/* Visually hidden — accessible to screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================================
+   03. 12 GALACTIC MOOD PALETTES
+   Each theme defined on body.theme-N sets:
+     --clr-a … --clr-e   : 5 gradient stops for background mesh
+     --clr-accent         : Buttons, borders, glows, highlights
+     --clr-text           : Primary text colour
+     --clr-text-muted     : Subdued caption text
+     --clr-glass-bg       : Glass card background (rgba)
+     --clr-glass-border   : Glass card inner-glow border (rgba)
+     --clr-glass-glow     : Outer glow colour for glass card
+     --clr-btn-bg         : Subscribe button gradient start
+     --clr-btn-end        : Subscribe button gradient end
+   ========================================= */
+
+/* ── THEME 01: NEBULA VIOLET (default) ── */
+body.theme-1 {
+    --clr-a: #0a001a;
+    --clr-b: #260048;
+    --clr-c: #5a008f;
+    --clr-d: #9c27b0;
+    --clr-e: #e040fb;
+    --clr-accent: #ce93d8;
+    --clr-text: #f3e5f5;
+    --clr-text-muted: rgba(243, 229, 245, 0.60);
+    --clr-glass-bg: rgba(80, 0, 130, 0.18);
+    --clr-glass-border: rgba(206, 147, 216, 0.25);
+    --clr-glass-glow: rgba(156, 39, 176, 0.35);
+    --clr-btn-bg: #9c27b0;
+    --clr-btn-end: #e040fb;
+}
+
+/* ── THEME 02: SUPERNOVA RED ── */
+body.theme-2 {
+    --clr-a: #1a0000;
+    --clr-b: #4a0010;
+    --clr-c: #900020;
+    --clr-d: #d32f2f;
+    --clr-e: #ff5252;
+    --clr-accent: #ff8a80;
+    --clr-text: #fce4ec;
+    --clr-text-muted: rgba(252, 228, 236, 0.60);
+    --clr-glass-bg: rgba(144, 0, 32, 0.18);
+    --clr-glass-border: rgba(255, 138, 128, 0.25);
+    --clr-glass-glow: rgba(211, 47, 47, 0.35);
+    --clr-btn-bg: #c62828;
+    --clr-btn-end: #ff5252;
+}
+
+/* ── THEME 03: DEEP VOID ── */
+body.theme-3 {
+    --clr-a: #000010;
+    --clr-b: #03001a;
+    --clr-c: #0a0030;
+    --clr-d: #1a0060;
+    --clr-e: #311b92;
+    --clr-accent: #7986cb;
+    --clr-text: #e8eaf6;
+    --clr-text-muted: rgba(232, 234, 246, 0.55);
+    --clr-glass-bg: rgba(10, 0, 48, 0.20);
+    --clr-glass-border: rgba(121, 134, 203, 0.22);
+    --clr-glass-glow: rgba(49, 27, 146, 0.40);
+    --clr-btn-bg: #283593;
+    --clr-btn-end: #5c6bc0;
+}
+
+/* ── THEME 04: ANDROMEDA TEAL ── */
+body.theme-4 {
+    --clr-a: #001a16;
+    --clr-b: #00352b;
+    --clr-c: #00695c;
+    --clr-d: #00897b;
+    --clr-e: #26c6da;
+    --clr-accent: #80cbc4;
+    --clr-text: #e0f2f1;
+    --clr-text-muted: rgba(224, 242, 241, 0.60);
+    --clr-glass-bg: rgba(0, 105, 92, 0.16);
+    --clr-glass-border: rgba(128, 203, 196, 0.25);
+    --clr-glass-glow: rgba(0, 137, 123, 0.35);
+    --clr-btn-bg: #00796b;
+    --clr-btn-end: #26c6da;
+}
+
+/* ── THEME 05: QUASAR GOLD ── */
+body.theme-5 {
+    --clr-a: #1a0f00;
+    --clr-b: #3e2000;
+    --clr-c: #7a4000;
+    --clr-d: #f57f17;
+    --clr-e: #ffca28;
+    --clr-accent: #ffe082;
+    --clr-text: #fff8e1;
+    --clr-text-muted: rgba(255, 248, 225, 0.60);
+    --clr-glass-bg: rgba(122, 64, 0, 0.18);
+    --clr-glass-border: rgba(255, 224, 130, 0.25);
+    --clr-glass-glow: rgba(245, 127, 23, 0.40);
+    --clr-btn-bg: #e65100;
+    --clr-btn-end: #ffca28;
+}
+
+/* ── THEME 06: SOLAR FLARE ── */
+body.theme-6 {
+    --clr-a: #1a0800;
+    --clr-b: #4a1800;
+    --clr-c: #bf360c;
+    --clr-d: #e64a19;
+    --clr-e: #ff6d00;
+    --clr-accent: #ffab91;
+    --clr-text: #fbe9e7;
+    --clr-text-muted: rgba(251, 233, 231, 0.60);
+    --clr-glass-bg: rgba(191, 54, 12, 0.16);
+    --clr-glass-border: rgba(255, 171, 145, 0.25);
+    --clr-glass-glow: rgba(230, 74, 25, 0.38);
+    --clr-btn-bg: #bf360c;
+    --clr-btn-end: #ff6d00;
+}
+
+/* ── THEME 07: AURORA MINT ── */
+body.theme-7 {
+    --clr-a: #001214;
+    --clr-b: #002a30;
+    --clr-c: #004d44;
+    --clr-d: #00897b;
+    --clr-e: #00e5d1;
+    --clr-accent: #a7ffeb;
+    --clr-text: #e0f7fa;
+    --clr-text-muted: rgba(224, 247, 250, 0.60);
+    --clr-glass-bg: rgba(0, 77, 68, 0.16);
+    --clr-glass-border: rgba(167, 255, 235, 0.22);
+    --clr-glass-glow: rgba(0, 229, 209, 0.32);
+    --clr-btn-bg: #00796b;
+    --clr-btn-end: #00e5d1;
+}
+
+/* ── THEME 08: COSMIC ROSE ── */
+body.theme-8 {
+    --clr-a: #1a000e;
+    --clr-b: #3e0020;
+    --clr-c: #880e4f;
+    --clr-d: #c2185b;
+    --clr-e: #f06292;
+    --clr-accent: #f48fb1;
+    --clr-text: #fce4ec;
+    --clr-text-muted: rgba(252, 228, 236, 0.60);
+    --clr-glass-bg: rgba(136, 14, 79, 0.16);
+    --clr-glass-border: rgba(244, 143, 177, 0.25);
+    --clr-glass-glow: rgba(194, 24, 91, 0.38);
+    --clr-btn-bg: #880e4f;
+    --clr-btn-end: #f06292;
+}
+
+/* ── THEME 09: EVENT HORIZON ── */
+body.theme-9 {
+    --clr-a: #0a0c0e;
+    --clr-b: #1c2429;
+    --clr-c: #37474f;
+    --clr-d: #546e7a;
+    --clr-e: #90a4ae;
+    --clr-accent: #b0bec5;
+    --clr-text: #eceff1;
+    --clr-text-muted: rgba(236, 239, 241, 0.55);
+    --clr-glass-bg: rgba(55, 71, 79, 0.18);
+    --clr-glass-border: rgba(176, 190, 197, 0.22);
+    --clr-glass-glow: rgba(84, 110, 122, 0.38);
+    --clr-btn-bg: #455a64;
+    --clr-btn-end: #90a4ae;
+}
+
+/* ── THEME 10: PULSAR BLUE ── */
+body.theme-10 {
+    --clr-a: #000b1a;
+    --clr-b: #001a3d;
+    --clr-c: #0d3a7a;
+    --clr-d: #1565c0;
+    --clr-e: #42a5f5;
+    --clr-accent: #82b1ff;
+    --clr-text: #e3f2fd;
+    --clr-text-muted: rgba(227, 242, 253, 0.60);
+    --clr-glass-bg: rgba(13, 58, 122, 0.18);
+    --clr-glass-border: rgba(130, 177, 255, 0.25);
+    --clr-glass-glow: rgba(21, 101, 192, 0.40);
+    --clr-btn-bg: #1565c0;
+    --clr-btn-end: #42a5f5;
+}
+
+/* ── THEME 11: DARK MATTER ── */
+body.theme-11 {
+    --clr-a: #060608;
+    --clr-b: #10131a;
+    --clr-c: #1c2130;
+    --clr-d: #2c3347;
+    --clr-e: #4a5568;
+    --clr-accent: #a0aec0;
+    --clr-text: #e2e8f0;
+    --clr-text-muted: rgba(226, 232, 240, 0.55);
+    --clr-glass-bg: rgba(28, 33, 48, 0.22);
+    --clr-glass-border: rgba(160, 174, 192, 0.18);
+    --clr-glass-glow: rgba(44, 51, 71, 0.50);
+    --clr-btn-bg: #2d3748;
+    --clr-btn-end: #4a5568;
+}
+
+/* ── THEME 12: STARDUST GREEN ── */
+body.theme-12 {
+    --clr-a: #001200;
+    --clr-b: #012a00;
+    --clr-c: #1b5e20;
+    --clr-d: #2e7d32;
+    --clr-e: #66bb6a;
+    --clr-accent: #a5d6a7;
+    --clr-text: #e8f5e9;
+    --clr-text-muted: rgba(232, 245, 233, 0.60);
+    --clr-glass-bg: rgba(27, 94, 32, 0.16);
+    --clr-glass-border: rgba(165, 214, 167, 0.22);
+    --clr-glass-glow: rgba(46, 125, 50, 0.36);
+    --clr-btn-bg: #2e7d32;
+    --clr-btn-end: #66bb6a;
+}
+
+/* =========================================
+   04. NEBULA BACKGROUND — 4-Layer Animated Mesh
+   ========================================= */
+
+/* Fixed full-viewport container */
+.nebula {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background-color: var(--clr-a);
+    transition: background-color 0.8s ease;
+}
+
+/* Each layer is a large blurred radial gradient blob.
+   mix-blend-mode: screen lets layers composite into a deep nebula */
+.nebula__layer {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    transition: opacity 0.8s ease;
+}
+
+/* Layer 1 — dominant hue blob (top-left) */
+.nebula__layer--1 {
+    width: 140vmax;
+    height: 140vmax;
+    top: -40vmax;
+    left: -40vmax;
+    background: radial-gradient(ellipse at center,
+            var(--clr-c) 0%,
+            var(--clr-b) 40%,
+            transparent 70%);
+    filter: blur(80px);
+    opacity: 0.85;
+    animation: nebulaDrift1 90s ease-in-out infinite alternate;
+}
+
+/* Layer 2 — accent bloom (bottom-right) */
+.nebula__layer--2 {
+    width: 120vmax;
+    height: 120vmax;
+    bottom: -30vmax;
+    right: -30vmax;
+    background: radial-gradient(ellipse at center,
+            var(--clr-e) 0%,
+            var(--clr-d) 35%,
+            transparent 65%);
+    filter: blur(100px);
+    opacity: 0.65;
+    animation: nebulaDrift2 110s ease-in-out infinite alternate;
+}
+
+/* Layer 3 — mid-field volume (center) */
+.nebula__layer--3 {
+    width: 100vmax;
+    height: 100vmax;
+    top: 20vmax;
+    left: 20vmax;
+    background: radial-gradient(ellipse at center,
+            var(--clr-d) 0%,
+            var(--clr-c) 50%,
+            transparent 75%);
+    filter: blur(120px);
+    opacity: 0.45;
+    animation: nebulaDrift3 75s ease-in-out infinite alternate;
+}
+
+/* Layer 4 — deep void tint (top-right) */
+.nebula__layer--4 {
+    width: 90vmax;
+    height: 90vmax;
+    top: -10vmax;
+    right: -10vmax;
+    background: radial-gradient(ellipse at center,
+            var(--clr-b) 0%,
+            var(--clr-a) 60%,
+            transparent 80%);
+    filter: blur(60px);
+    opacity: 0.70;
+    animation: nebulaDrift4 130s ease-in-out infinite alternate;
+}
+
+/* Subtle CSS-generated grain/noise overlay */
+.nebula__noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+/* =========================================
+   05. ANTI-GRAVITY FIELD — Floating Orbs & Geometry
+   ========================================= */
+
+.gravity-field {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* ——— Glass Orbs ——— */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    background: radial-gradient(circle at 35% 35%,
+            rgba(255, 255, 255, 0.22) 0%,
+            rgba(255, 255, 255, 0.04) 50%,
+            rgba(255, 255, 255, 0.06) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        0 8px 32px rgba(0, 0, 0, 0.20);
+    will-change: transform;
+    /* GPU-accelerated: uses translate3d & CSS custom timing per element */
+    animation: orbFloat var(--orb-duration, 12s) ease-in-out var(--orb-delay, 0s) infinite alternate;
+}
+
+/* Individual orb placements & sizes */
+.orb--1 {
+    width: clamp(80px, 12vw, 180px);
+    height: clamp(80px, 12vw, 180px);
+    top: 8%;
+    left: 6%;
+    --orb-duration: 14s;
+    --orb-delay: 0s;
+}
+
+.orb--2 {
+    width: clamp(50px, 7vw, 120px);
+    height: clamp(50px, 7vw, 120px);
+    top: 70%;
+    left: 12%;
+    --orb-duration: 18s;
+    --orb-delay: -4s;
+}
+
+.orb--3 {
+    width: clamp(100px, 16vw, 260px);
+    height: clamp(100px, 16vw, 260px);
+    top: 20%;
+    right: 4%;
+    --orb-duration: 22s;
+    --orb-delay: -8s;
+}
+
+.orb--4 {
+    width: clamp(40px, 5vw, 90px);
+    height: clamp(40px, 5vw, 90px);
+    bottom: 15%;
+    right: 18%;
+    --orb-duration: 16s;
+    --orb-delay: -2s;
+}
+
+.orb--5 {
+    width: clamp(60px, 9vw, 140px);
+    height: clamp(60px, 9vw, 140px);
+    top: 45%;
+    left: 2%;
+    --orb-duration: 20s;
+    --orb-delay: -6s;
+}
+
+.orb--6 {
+    width: clamp(30px, 4vw, 70px);
+    height: clamp(30px, 4vw, 70px);
+    bottom: 8%;
+    left: 40%;
+    --orb-duration: 12s;
+    --orb-delay: -10s;
+}
+
+/* ——— Geometric Shapes ——— */
+.geo {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.04);
+    will-change: transform;
+}
+
+/* Square rotated 45° → diamond */
+.geo--1 {
+    width: clamp(50px, 7vw, 100px);
+    height: clamp(50px, 7vw, 100px);
+    top: 15%;
+    left: 30%;
+    transform: rotate(45deg);
+    animation: geoFloat1 17s ease-in-out -3s infinite alternate;
+}
+
+/* Tall rectangle */
+.geo--2 {
+    width: clamp(30px, 4vw, 60px);
+    height: clamp(80px, 10vw, 160px);
+    bottom: 25%;
+    right: 8%;
+    border-radius: 4px;
+    animation: geoFloat2 21s ease-in-out -7s infinite alternate;
+}
+
+/* Large tipped diamond */
+.geo--3 {
+    width: clamp(80px, 10vw, 150px);
+    height: clamp(80px, 10vw, 150px);
+    bottom: 10%;
+    left: 20%;
+    transform: rotate(30deg);
+    animation: geoFloat3 25s ease-in-out -12s infinite alternate;
+}
+
+/* Small square */
+.geo--4 {
+    width: clamp(25px, 3vw, 50px);
+    height: clamp(25px, 3vw, 50px);
+    top: 60%;
+    right: 30%;
+    animation: geoFloat1 13s ease-in-out -5s infinite alternate;
+}
+
+/* Thin horizontal bar */
+.geo--5 {
+    width: clamp(60px, 8vw, 140px);
+    height: clamp(16px, 2vw, 30px);
+    top: 5%;
+    right: 20%;
+    border-radius: 2px;
+    animation: geoFloat2 19s ease-in-out -9s infinite alternate;
+}
+
+/* =========================================
+   06. PAGE LAYOUT
+   ========================================= */
+
+.page-wrapper {
+    position: relative;
+    z-index: 2;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+}
+
+.main {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   07. GLASS CARD
+   ========================================= */
+
+.glass-card {
+    position: relative;
+    width: 100%;
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+    border-radius: 28px;
+    /* Glassmorphism core */
+    background: var(--clr-glass-bg);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    /* Inner glow border */
+    border: 1px solid var(--clr-glass-border);
+    /* Outer ambient glow */
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 8px 40px rgba(0, 0, 0, 0.35),
+        0 2px 80px var(--clr-glass-glow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(1.25rem, 3vw, 1.75rem);
+    transition:
+        background 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Subtle top-edge highlight shimmer */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.35) 50%,
+            transparent);
+    border-radius: 50%;
+}
+
+/* =========================================
+   08. BRAND / LOGO
+   ========================================= */
+
+.glass-card__header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--clr-glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    transition: border-color 0.6s ease, background 0.6s ease;
+}
+
+.brand__icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.brand__name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.1rem, 3vw, 1.35rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text);
+    transition: color 0.6s ease;
+}
+
+/* =========================================
+   09. TYPOGRAPHY — Glass-text, Headline, Caption
+   ========================================= */
+
+/* Eyebrow row with flanking decorative lines */
+.glass-card__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    transition: color 0.6s ease;
+}
+
+.eyebrow__line {
+    display: block;
+    width: clamp(20px, 4vw, 40px);
+    height: 1px;
+    background: var(--clr-accent);
+    opacity: 0.5;
+    transition: background 0.6s ease;
+}
+
+/* Main headline */
+.glass-card__headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--clr-text);
+    transition: color 0.6s ease;
+}
+
+/* Glass-text gradient clip effect on the accent word */
+.text--gradient {
+    background: linear-gradient(135deg,
+            var(--clr-accent) 0%,
+            var(--clr-e) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    /* Subtle text-shadow glow under the gradient clip */
+    filter: drop-shadow(0 0 18px var(--clr-glass-glow));
+    transition: filter 0.6s ease;
+}
+
+/* Caption / description text */
+.glass-card__caption {
+    max-width: 50ch;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 300;
+    color: var(--clr-text-muted);
+    line-height: 1.75;
+    transition: color 0.6s ease;
+}
+
+/* =========================================
+   10. COUNTDOWN TIMER
+   ========================================= */
+
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.countdown__digit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(64px, 10vw, 90px);
+    padding: 0.6rem 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--clr-glass-border);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--clr-text);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    transition:
+        color 0.6s ease,
+        border-color 0.6s ease,
+        transform 0.1s ease;
+}
+
+/* Digit flip micro-animation triggered by JS adding is-flipping */
+.countdown__digit.is-flipping {
+    animation: digitFlip 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.countdown__label {
+    font-size: clamp(0.55rem, 1.2vw, 0.65rem);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    transition: color 0.6s ease;
+}
+
+/* Colon separator */
+.countdown__sep {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--clr-accent);
+    opacity: 0.60;
+    align-self: flex-start;
+    padding-top: 0.4rem;
+    animation: colonPulse 1s ease-in-out infinite;
+    transition: color 0.6s ease;
+}
+
+/* =========================================
+   11. SUBSCRIBE FORM
+   ========================================= */
+
+.subscribe {
+    width: 100%;
+}
+
+.subscribe-form__field-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--clr-glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 24px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Input focus ring glow */
+.subscribe-form__field-wrap:focus-within {
+    border-color: var(--clr-accent);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 0 3px var(--clr-glass-glow),
+        0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Validation states */
+.subscribe-form__field-wrap.is-valid {
+    border-color: #4caf50;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 0 3px rgba(76, 175, 80, 0.30),
+        0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.subscribe-form__field-wrap.is-error {
+    border-color: #f44336;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 0 3px rgba(244, 67, 54, 0.30),
+        0 4px 24px rgba(0, 0, 0, 0.25);
+    animation: formShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.subscribe-form__input {
+    flex: 1;
+    min-width: 0;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    font-weight: 400;
+    color: var(--clr-text);
+    transition: color 0.6s ease;
+}
+
+.subscribe-form__input::placeholder {
+    color: var(--clr-text-muted);
+}
+
+.subscribe-form__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.2rem, 3vw, 1.75rem);
+    background: linear-gradient(135deg, var(--clr-btn-bg) 0%, var(--clr-btn-end) 100%);
+    border-radius: 999px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8rem, 1.8vw, 0.875rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition:
+        opacity 0.3s ease,
+        transform 0.2s ease,
+        background 0.6s ease;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+.subscribe-form__btn:hover {
+    opacity: 0.9;
+    transform: translateX(2px);
+}
+
+.subscribe-form__btn:active {
+    transform: scale(0.97);
+}
+
+.subscribe-form__btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.subscribe-form__btn-text {
+    display: inline;
+}
+
+.subscribe-form__btn-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Feedback message below form */
+.subscribe-form__message {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    min-height: 1.1rem;
+    color: var(--clr-text-muted);
+    text-align: center;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.subscribe-form__message.is-visible {
+    opacity: 1;
+}
+
+.subscribe-form__message.is-success {
+    color: #81c784;
+}
+
+.subscribe-form__message.is-error {
+    color: #ef9a9a;
+}
+
+/* =========================================
+   12. SOCIAL ICONS
+   ========================================= */
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.6rem, 2vw, 1rem);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(40px, 7vw, 48px);
+    height: clamp(40px, 7vw, 48px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--clr-glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--clr-accent);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        border-color 0.6s ease,
+        color 0.6s ease,
+        box-shadow 0.3s ease;
+}
+
+.social__link:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.20),
+        0 8px 24px rgba(0, 0, 0, 0.28),
+        0 0 16px var(--clr-glass-glow);
+}
+
+/* =========================================
+   13. GLASS CARD FOOTER
+   ========================================= */
+
+.glass-card__footer {
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card__footer-text {
+    font-size: clamp(0.7rem, 1.5vw, 0.78rem);
+    color: var(--clr-text-muted);
+    transition: color 0.6s ease;
+}
+
+/* =========================================
+   14. GEAR THEME SWITCHER
+   Fixed floating gear button — click to expand
+   the glassmorphic panel showing 12 theme links.
+   ========================================= */
+
+/* Outer wrapper — fixed to bottom-right corner */
+.gear-switcher {
+    position: fixed;
+    bottom: clamp(1.25rem, 3vw, 2rem);
+    right: clamp(1.25rem, 3vw, 2rem);
+    z-index: 200;
+}
+
+/* Floating gear button */
+.gear-switcher__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.20),
+        0 8px 32px rgba(0, 0, 0, 0.40);
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.gear-switcher__btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.08);
+}
+
+.gear-switcher__btn svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+/* Spin the gear icon when the panel is open */
+.gear-switcher.is-open .gear-switcher__btn svg {
+    animation: gearSpin 8s linear infinite;
+}
+
+/* Expandable glassmorphic panel */
+.gear-switcher__panel {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    right: 0;
+    width: 280px;
+    padding: 1.25rem;
+    border-radius: 20px;
+    background: rgba(10, 10, 20, 0.55);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 16px 48px rgba(0, 0, 0, 0.55);
+    /* Hidden by default — JS toggles is-open */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.97);
+    transform-origin: bottom right;
+    transition:
+        opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Visible state applied by JS */
+.gear-switcher.is-open .gear-switcher__panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Panel header / title */
+.gear-switcher__title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.9rem;
+    user-select: none;
+}
+
+/* 3-column grid of theme links */
+.gear-switcher__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+}
+
+/* Individual theme link card */
+.gear-switcher__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.35rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.70);
+}
+
+.gear-switcher__item:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* Highlight the currently active page */
+.gear-switcher__item.is-active {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+/* Colour swatch thumbnail preview */
+.gear-switcher__preview {
+    display: block;
+    width: 38px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}
+
+/* Each preview uses a hardcoded gradient (CSS vars not inherited cross-page) */
+.gear-switcher__preview--1 {
+    background: linear-gradient(135deg, #5a008f 0%, #e040fb 100%);
+}
+
+.gear-switcher__preview--2 {
+    background: linear-gradient(135deg, #900020 0%, #ff5252 100%);
+}
+
+.gear-switcher__preview--3 {
+    background: linear-gradient(135deg, #0a0030 0%, #311b92 100%);
+}
+
+.gear-switcher__preview--4 {
+    background: linear-gradient(135deg, #00695c 0%, #26c6da 100%);
+}
+
+.gear-switcher__preview--5 {
+    background: linear-gradient(135deg, #7a4000 0%, #ffca28 100%);
+}
+
+.gear-switcher__preview--6 {
+    background: linear-gradient(135deg, #bf360c 0%, #ff6d00 100%);
+}
+
+.gear-switcher__preview--7 {
+    background: linear-gradient(135deg, #004d44 0%, #00e5d1 100%);
+}
+
+.gear-switcher__preview--8 {
+    background: linear-gradient(135deg, #880e4f 0%, #f06292 100%);
+}
+
+.gear-switcher__preview--9 {
+    background: linear-gradient(135deg, #37474f 0%, #90a4ae 100%);
+}
+
+.gear-switcher__preview--10 {
+    background: linear-gradient(135deg, #0d3a7a 0%, #42a5f5 100%);
+}
+
+.gear-switcher__preview--11 {
+    background: linear-gradient(135deg, #1c2130 0%, #4a5568 100%);
+}
+
+.gear-switcher__preview--12 {
+    background: linear-gradient(135deg, #1b5e20 0%, #66bb6a 100%);
+}
+
+/* Theme name label under preview */
+.gear-switcher__item span:last-child {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 1.2;
+}

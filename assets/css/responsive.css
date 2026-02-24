@@ -1,0 +1,136 @@
+/*
+ * ============================================================
+ *   THE NEBULA — Responsive Stylesheet
+ *   Version  : 2.0.0
+ *   Author   : Diamondz Technologiez
+ *
+ *   Breakpoints:
+ *     01. Tablet          — max-width: 768px
+ *     02. Mobile          — max-width: 480px
+ *     03. 4K / High-DPI   — min-width: 2560px
+ *     04. Reduced Motion  — prefers-reduced-motion: reduce
+ * ============================================================
+ */
+
+/* =========================================
+   01. TABLET — ≤ 768px
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Move the gear switcher to bottom-centre on tablet */
+    .gear-switcher {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.25rem;
+    }
+
+    /* Adjust the panel to open above the centred button */
+    .gear-switcher__panel {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px) scale(0.97);
+        transform-origin: bottom center;
+        width: 300px;
+    }
+
+    .gear-switcher.is-open .gear-switcher__panel {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    /* Add bottom padding so content clears the switcher */
+    .page-wrapper {
+        padding: 1.5rem 1rem 6rem;
+    }
+}
+
+/* =========================================
+   02. MOBILE — ≤ 480px
+   ========================================= */
+@media (max-width: 480px) {
+
+    .glass-card {
+        border-radius: 20px;
+        gap: 1.25rem;
+    }
+
+    /* Smaller digit boxes to fit mobile screens */
+    .countdown__digit {
+        min-width: 56px;
+        font-size: 1.5rem;
+        padding: 0.5rem 0.3rem;
+        border-radius: 10px;
+    }
+
+    .countdown {
+        gap: 0.4rem;
+    }
+
+    .countdown__sep {
+        font-size: 1.2rem;
+    }
+
+    /* Stack the subscribe form vertically on very small screens */
+    .subscribe-form__field-wrap {
+        border-radius: 14px;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .subscribe-form__btn {
+        border-radius: 999px;
+        justify-content: center;
+    }
+
+    /* Reduce floating element count on mobile for performance.
+     Hiding the largest/most expensive elements preserves 60fps. */
+    .orb--3,
+    .orb--4,
+    .geo--1,
+    .geo--3,
+    .geo--5 {
+        display: none;
+    }
+}
+
+/* =========================================
+   03. 4K / HIGH-DPI — ≥ 2560px
+   ========================================= */
+@media (min-width: 2560px) {
+
+    .main {
+        max-width: 860px;
+    }
+
+    .glass-card {
+        padding: 4.5rem 4rem;
+        border-radius: 36px;
+    }
+}
+
+/* =========================================
+   04. REDUCE MOTION — respect OS accessibility setting
+   Disables all decorative animations for users who
+   prefer reduced motion (WCAG 2.1 AA compliance).
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    .nebula__layer,
+    .orb,
+    .geo,
+    .countdown__sep,
+    .gear-switcher__btn svg {
+        animation: none !important;
+    }
+
+    .social__link,
+    .gear-switcher__btn,
+    .gear-switcher__item,
+    .subscribe-form__btn {
+        transition: none !important;
+    }
+
+    /* Still keep the panel open/close functional */
+    .gear-switcher__panel {
+        transition: opacity 0.15s ease !important;
+    }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Nebula — Solar Flare theme. Anti-gravity glassmorphism Coming Soon page." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="The Nebula — Coming Soon" />
+    <meta property="og:type" content="website" />
+    <title>The Nebula — Solar Flare | Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+
+<body class="theme-6">
+    <div class="nebula" aria-hidden="true">
+        <div class="nebula__layer nebula__layer--1"></div>
+        <div class="nebula__layer nebula__layer--2"></div>
+        <div class="nebula__layer nebula__layer--3"></div>
+        <div class="nebula__layer nebula__layer--4"></div>
+        <div class="nebula__noise"></div>
+    </div>
+    <div class="gravity-field" aria-hidden="true">
+        <div class="orb orb--1" data-depth="0.04"></div>
+        <div class="orb orb--2" data-depth="0.07"></div>
+        <div class="orb orb--3" data-depth="0.03"></div>
+        <div class="orb orb--4" data-depth="0.06"></div>
+        <div class="orb orb--5" data-depth="0.05"></div>
+        <div class="orb orb--6" data-depth="0.08"></div>
+        <div class="geo geo--1" data-depth="0.05"></div>
+        <div class="geo geo--2" data-depth="0.03"></div>
+        <div class="geo geo--3" data-depth="0.06"></div>
+        <div class="geo geo--4" data-depth="0.04"></div>
+        <div class="geo geo--5" data-depth="0.07"></div>
+    </div>
+    <div class="page-wrapper">
+        <main class="main" role="main">
+            <article class="glass-card">
+                <header class="glass-card__header">
+                    <div class="brand" aria-label="The Nebula brand logo"><span class="brand__icon"
+                            aria-hidden="true"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="19" cy="19" r="18" stroke="url(#bg06)" stroke-width="1.5" />
+                                <path d="M19 4 L21.5 16 L34 19 L21.5 22 L19 34 L16.5 22 L4 19 L16.5 16 Z"
+                                    fill="url(#bg06)" opacity="0.9" />
+                                <defs>
+                                    <linearGradient id="bg06" x1="4" y1="4" x2="34" y2="34"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="var(--clr-accent)" />
+                                        <stop offset="100%" stop-color="var(--clr-e)" />
+                                    </linearGradient>
+                                </defs>
+                            </svg></span><span class="brand__name">The Nebula</span></div>
+                </header>
+                <p class="glass-card__eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Something
+                    Extraordinary Is Coming<span class="eyebrow__line" aria-hidden="true"></span></p>
+                <h1 class="glass-card__headline">We're&nbsp;<span class="text--gradient">Launching</span> Soon</h1>
+                <p class="glass-card__caption">A new dimension of digital experience is being crafted
+                    in&nbsp;the&nbsp;cosmos. Leave your coordinates and be the first to&nbsp;enter.</p>
+                <div class="countdown" role="timer" aria-label="Countdown to launch"
+                    data-target-date="2026-06-01T00:00:00Z">
+                    <div class="countdown__unit"><span class="countdown__digit" id="cd-days">00</span><span
+                            class="countdown__label">Days</span></div><span class="countdown__sep"
+                        aria-hidden="true">:</span>
+                    <div class="countdown__unit"><span class="countdown__digit" id="cd-hours">00</span><span
+                            class="countdown__label">Hours</span></div><span class="countdown__sep"
+                        aria-hidden="true">:</span>
+                    <div class="countdown__unit"><span class="countdown__digit" id="cd-mins">00</span><span
+                            class="countdown__label">Minutes</span></div><span class="countdown__sep"
+                        aria-hidden="true">:</span>
+                    <div class="countdown__unit"><span class="countdown__digit" id="cd-secs">00</span><span
+                            class="countdown__label">Seconds</span></div>
+                </div>
+                <section class="subscribe" aria-label="Newsletter subscription">
+                    <form class="subscribe-form" id="subscribeForm" action="#" method="POST" novalidate>
+                        <div class="subscribe-form__field-wrap" id="emailWrap"><label for="emailInput"
+                                class="sr-only">Your email address</label><input class="subscribe-form__input"
+                                type="email" id="emailInput" name="email" placeholder="Enter your email address…"
+                                autocomplete="email" required aria-required="true"
+                                aria-describedby="formMessage" /><button class="subscribe-form__btn" type="submit"
+                                id="subscribeBtn"><span class="subscribe-form__btn-text">Notify Me</span><span
+                                    class="subscribe-form__btn-icon" aria-hidden="true"><svg width="18" height="18"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span></button></div>
+                        <p class="subscribe-form__message" id="formMessage" role="alert" aria-live="polite"></p>
+                    </form>
+                </section>
+                <nav class="social" aria-label="Follow us on social media"><a class="social__link" href="#"
+                        target="_blank" rel="noopener noreferrer" aria-label="Follow on X (Twitter)"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.072 2.25H8.08l4.261 5.632 5.902-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg></a><a class="social__link" href="#" target="_blank" rel="noopener noreferrer"
+                        aria-label="Follow on Instagram"><svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg></a><a class="social__link" href="#" target="_blank" rel="noopener noreferrer"
+                        aria-label="Follow on LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a><a class="social__link" href="#" target="_blank" rel="noopener noreferrer"
+                        aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg></a><a class="social__link" href="#" target="_blank" rel="noopener noreferrer"
+                        aria-label="Subscribe on YouTube"><svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                        </svg></a></nav>
+                <footer class="glass-card__footer">
+                    <p class="glass-card__footer-text">&copy; <span id="copyrightYear"></span> The Nebula. Crafted with
+                        passion for the&nbsp;cosmos.</p>
+                </footer>
+            </article>
+        </main>
+    </div>
+    <div class="gear-switcher" id="gearSwitcher"><button class="gear-switcher__btn" id="gearBtn"
+            aria-label="Open Theme Switcher" aria-expanded="false" aria-controls="gearPanel"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+            </svg></button>
+        <div class="gear-switcher__panel" id="gearPanel" aria-hidden="true">
+            <p class="gear-switcher__title">Choose a Theme</p>
+            <div class="gear-switcher__grid"><a href="index-01.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--1"></span><span>Nebula Violet</span></a><a
+                    href="index-02.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--2"></span><span>Supernova Red</span></a><a
+                    href="index-03.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--3"></span><span>Deep Void</span></a><a
+                    href="index-04.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--4"></span><span>Andromeda
+                        Teal</span></a><a href="index-05.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--5"></span><span>Quasar Gold</span></a><a
+                    href="index-06.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--6"></span><span>Solar Flare</span></a><a
+                    href="index-07.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--7"></span><span>Aurora Mint</span></a><a
+                    href="index-08.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--8"></span><span>Cosmic Rose</span></a><a
+                    href="index-09.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--9"></span><span>Event Horizon</span></a><a
+                    href="index-10.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--10"></span><span>Pulsar Blue</span></a><a
+                    href="index-11.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--11"></span><span>Dark Matter</span></a><a
+                    href="index-12.html" class="gear-switcher__item"><span
+                        class="gear-switcher__preview gear-switcher__preview--12"></span><span>Stardust Green</span></a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

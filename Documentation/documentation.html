@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Nebula — Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --c-bg: #05010f;
+            --c-surface: #0f0921;
+            --c-border: rgba(180, 130, 255, 0.15);
+            --c-accent: #b08aff;
+            --c-text: #e8e0ff;
+            --c-muted: rgba(232, 224, 255, 0.55);
+            --c-code: #c8a8ff;
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--c-bg);
+            color: var(--c-text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--c-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout */
+        .doc-wrap {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--c-surface);
+            border-right: 1px solid var(--c-border);
+            padding: 2rem 1.5rem;
+        }
+
+        .sidebar__logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--c-accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .sidebar__sub {
+            font-size: 0.75rem;
+            color: var(--c-muted);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar__nav {
+            list-style: none;
+        }
+
+        .sidebar__nav li {
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar__nav a {
+            display: block;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            color: var(--c-muted);
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .sidebar__nav a:hover,
+        .sidebar__nav a.active {
+            background: rgba(176, 138, 255, 0.12);
+            color: var(--c-accent);
+            text-decoration: none;
+        }
+
+        .sidebar__nav .group-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(232, 224, 255, 0.3);
+            padding: 1rem 0.75rem 0.3rem;
+        }
+
+        .content {
+            flex: 1;
+            max-width: 860px;
+            padding: 3rem 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .doc-wrap {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b08aff, #ff6ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d8c8ff;
+            margin: 3rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--c-border);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--c-accent);
+            margin: 1.75rem 0 0.6rem;
+        }
+
+        p {
+            color: var(--c-muted);
+            margin-bottom: 1rem;
+        }
+
+        ul,
+        ol {
+            color: var(--c-muted);
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--c-border);
+        }
+
+        .hero__meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(176, 138, 255, 0.12);
+            border: 1px solid var(--c-border);
+            border-radius: 6px;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--c-accent);
+        }
+
+        /* Code */
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875em;
+            color: var(--c-code);
+            background: rgba(176, 138, 255, 0.1);
+            padding: 0.1em 0.4em;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin-bottom: 1.25rem;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--c-code);
+            font-size: 0.875rem;
+        }
+
+        /* Cards */
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .theme-card {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .theme-card strong {
+            color: var(--c-text);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .theme-card span {
+            color: var(--c-muted);
+            font-size: 0.78rem;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.6rem 1rem;
+            background: var(--c-surface);
+            color: var(--c-accent);
+            font-weight: 600;
+            border-bottom: 1px solid var(--c-border);
+        }
+
+        td {
+            padding: 0.6rem 1rem;
+            color: var(--c-muted);
+            border-bottom: 1px solid rgba(180, 130, 255, 0.07);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--c-border);
+            color: var(--c-muted);
+            font-size: 0.82rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="doc-wrap">
+
+        <!-- ═══════════════════════════════════════════════════
+       SIDEBAR NAVIGATION
+  ════════════════════════════════════════════════════ -->
+        <aside class="sidebar">
+            <div class="sidebar__logo">⬡ The Nebula</div>
+            <div class="sidebar__sub">Version 2.0.0 Documentation</div>
+            <ul class="sidebar__nav">
+                <li class="group-title">Getting Started</li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#folder-structure">Folder Structure</a></li>
+                <li><a href="#quick-start">Quick Start</a></li>
+
+                <li class="group-title">Customization</li>
+                <li><a href="#themes">12 Color Themes</a></li>
+                <li><a href="#countdown">Countdown Date</a></li>
+                <li><a href="#social-links">Social Links</a></li>
+                <li><a href="#subscribe-form">Subscribe Form</a></li>
+                <li><a href="#brand">Brand &amp; Logo</a></li>
+
+                <li class="group-title">Technical</li>
+                <li><a href="#css-architecture">CSS Architecture</a></li>
+                <li><a href="#javascript">JavaScript Modules</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#browser-support">Browser Support</a></li>
+
+                <li class="group-title">Other</li>
+                <li><a href="#credits">Credits</a></li>
+            </ul>
+        </aside>
+
+        <!-- ═══════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════ -->
+        <main class="content">
+
+            <!-- HERO -->
+            <section class="hero" id="introduction">
+                <h1>The Nebula</h1>
+                <p>Ultra-high-end glassmorphism Coming Soon template with 12 hand-crafted colour themes, anti-gravity
+                    floating field, mouse parallax, live countdown, and AJAX subscription form — all built on Vanilla
+                    HTML5, CSS3, and JavaScript. <strong style="color:var(--c-text)">Zero dependencies.</strong></p>
+                <div class="hero__meta">
+                    <span class="badge">v2.0.0</span>
+                    <span class="badge">Vanilla JS</span>
+                    <span class="badge">12 Themes</span>
+                    <span class="badge">WCAG 2.1 AA</span>
+                    <span class="badge">W3C Valid</span>
+                </div>
+            </section>
+
+            <!-- FOLDER STRUCTURE -->
+            <section id="folder-structure">
+                <h2>Folder Structure</h2>
+                <pre><code>nebula_html_template/
+├── index-01.html       ← Theme 01: Nebula Violet   (master reference)
+├── index-02.html       ← Theme 02: Supernova Red
+├── index-03.html       ← Theme 03: Deep Void
+├── index-04.html       ← Theme 04: Andromeda Teal
+├── index-05.html       ← Theme 05: Quasar Gold
+├── index-06.html       ← Theme 06: Solar Flare
+├── index-07.html       ← Theme 07: Aurora Mint
+├── index-08.html       ← Theme 08: Cosmic Rose
+├── index-09.html       ← Theme 09: Event Horizon
+├── index-10.html       ← Theme 10: Pulsar Blue
+├── index-11.html       ← Theme 11: Dark Matter
+├── index-12.html       ← Theme 12: Stardust Green
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css        ← Core styles + 12 theme palettes
+│   │   ├── animations.css   ← All @keyframes (GPU-composited)
+│   │   └── responsive.css   ← @media breakpoints
+│   └── js/
+│       ├── countdown.js     ← Self-contained countdown module
+│       └── main.js          ← Orbs, parallax, form, gear switcher
+│
+├── Documentation/
+│   └── documentation.html  ← This file
+└── Licensing/
+    └── license.txt</code></pre>
+            </section>
+
+            <!-- QUICK START -->
+            <section id="quick-start">
+                <h2>Quick Start</h2>
+                <h3>1. Choose your theme</h3>
+                <p>Open any <code>index-0N.html</code> file in your browser. The <strong>Gear Switcher</strong>
+                    (bottom-right corner) lets you navigate between all 12 colour versions.</p>
+
+                <h3>2. Deploy your chosen theme</h3>
+                <p>Rename your chosen theme file to <code>index.html</code> and upload the entire
+                    <code>nebula_html_template/</code> folder to your server root. <strong>Do not change the folder
+                        structure</strong> — all asset paths are relative.</p>
+
+                <h3>3. Customise (see sections below)</h3>
+                <ul>
+                    <li>Set your launch date in the <code>data-target-date</code> attribute</li>
+                    <li>Add your social profile URLs</li>
+                    <li>Wire up your email API endpoint</li>
+                    <li>Replace the brand name and logo</li>
+                </ul>
+            </section>
+
+            <!-- THEMES -->
+            <section id="themes">
+                <h2>12 Color Themes</h2>
+                <p>Each HTML file differs only by the class on its <code>&lt;body&gt;</code> tag. All palette variables
+                    are CSS custom properties defined in <code>assets/css/style.css</code> under section <strong>03 —
+                        Theme Palettes</strong>.</p>
+
+                <div class="theme-grid">
+                    <div class="theme-card"><strong>01 Nebula Violet</strong><span>body.theme-1</span></div>
+                    <div class="theme-card"><strong>02 Supernova Red</strong><span>body.theme-2</span></div>
+                    <div class="theme-card"><strong>03 Deep Void</strong><span>body.theme-3</span></div>
+                    <div class="theme-card"><strong>04 Andromeda Teal</strong><span>body.theme-4</span></div>
+                    <div class="theme-card"><strong>05 Quasar Gold</strong><span>body.theme-5</span></div>
+                    <div class="theme-card"><strong>06 Solar Flare</strong><span>body.theme-6</span></div>
+                    <div class="theme-card"><strong>07 Aurora Mint</strong><span>body.theme-7</span></div>
+                    <div class="theme-card"><strong>08 Cosmic Rose</strong><span>body.theme-8</span></div>
+                    <div class="theme-card"><strong>09 Event Horizon</strong><span>body.theme-9</span></div>
+                    <div class="theme-card"><strong>10 Pulsar Blue</strong><span>body.theme-10</span></div>
+                    <div class="theme-card"><strong>11 Dark Matter</strong><span>body.theme-11</span></div>
+                    <div class="theme-card"><strong>12 Stardust Green</strong><span>body.theme-12</span></div>
+                </div>
+
+                <h3>Changing a colour palette</h3>
+                <p>Find the relevant <code>body.theme-N { }</code> block in <code>style.css</code> and adjust any of
+                    these variables:</p>
+                <table>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-a</code> to <code>--clr-e</code></td>
+                        <td>Background nebula gradient stops (dark → light)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-accent</code></td>
+                        <td>Primary accent — links, borders, icons</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-text</code></td>
+                        <td>Primary text colour</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-text-muted</code></td>
+                        <td>Secondary / caption text</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-glass-bg</code></td>
+                        <td>Glass card background (rgba)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-glass-border</code></td>
+                        <td>Glass card border (rgba)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-glass-glow</code></td>
+                        <td>Outer glow / box-shadow colour</td>
+                    </tr>
+                    <tr>
+                        <td><code>--clr-btn-bg</code> / <code>--clr-btn-end</code></td>
+                        <td>Subscribe button gradient</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- COUNTDOWN -->
+            <section id="countdown">
+                <h2>Countdown Date</h2>
+                <p>Find the <code>.countdown</code> element in your HTML and update the <code>data-target-date</code>
+                    attribute. Use <strong>ISO 8601 UTC</strong> format:</p>
+                <pre><code>&lt;!-- Change the date below to your actual launch date --&gt;
+&lt;div class="countdown"
+     role="timer"
+     data-target-date="2027-01-01T00:00:00Z"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+                <p>The countdown module (<code>assets/js/countdown.js</code>) reads this attribute automatically. When
+                    the date is reached, the display resets to <code>00:00:00:00</code> and the aria-label updates to
+                    "We have launched!"</p>
+            </section>
+
+            <!-- SOCIAL LINKS -->
+            <section id="social-links">
+                <h2>Social Links</h2>
+                <p>Locate the <code>&lt;nav class="social"&gt;</code> section in your HTML. Replace each
+                    <code>href="#"</code> with your real profile URL:</p>
+                <pre><code>&lt;!-- Example: replace # with your actual URLs --&gt;
+&lt;a class="social__link" href="https://twitter.com/yourhandle" ...&gt;
+&lt;a class="social__link" href="https://instagram.com/yourhandle" ...&gt;
+&lt;a class="social__link" href="https://linkedin.com/in/yourname" ...&gt;
+&lt;a class="social__link" href="https://github.com/yourname" ...&gt;
+&lt;a class="social__link" href="https://youtube.com/@yourchannel" ...&gt;</code></pre>
+                <p>To remove a social icon, delete its <code>&lt;a&gt;</code> tag entirely. To add more, copy an
+                    existing one and swap the SVG path.</p>
+            </section>
+
+            <!-- SUBSCRIBE FORM -->
+            <section id="subscribe-form">
+                <h2>Subscribe Form Integration</h2>
+                <p>The form uses a mock API by default. To connect your real email service, open
+                    <code>assets/js/main.js</code> and find the <code>sendToApi()</code> function inside the
+                    <code>SubscribeForm</code> module:</p>
+                <pre><code>// ── REPLACE THIS FUNCTION BODY with your real endpoint ──
+const sendToApi = async (email) => {
+  // Example: Mailchimp, ConvertKit, custom backend, etc.
+  const response = await fetch('https://your-endpoint.com/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  const data = await response.json();
+  return { ok: response.ok, message: data.message || 'You are on the list!' };
+};</code></pre>
+                <p>The function must return a Promise that resolves to <code>{ ok: boolean, message: string }</code>.
+                    The UI handles all loading/success/error states automatically.</p>
+            </section>
+
+            <!-- BRAND -->
+            <section id="brand">
+                <h2>Brand &amp; Logo</h2>
+                <h3>Changing the site name</h3>
+                <p>Search for <code>The Nebula</code> in your HTML file and replace with your brand name. It appears in
+                    three places: the <code>&lt;title&gt;</code> tag, the <code>.brand__name</code> span, and the
+                    footer.</p>
+
+                <h3>Replacing the SVG logo mark</h3>
+                <p>The star icon inside <code>.brand__icon</code> is an inline SVG. Replace it with your own SVG, or use
+                    an <code>&lt;img&gt;</code> tag. The icon uses <code>--clr-accent</code> and <code>--clr-e</code>
+                    for its gradient, so it will automatically adapt to the active theme.</p>
+            </section>
+
+            <!-- CSS ARCHITECTURE -->
+            <section id="css-architecture">
+                <h2>CSS Architecture</h2>
+                <p>Styles are split into three focused files for clean separation of concerns:</p>
+                <table>
+                    <tr>
+                        <th>File</th>
+                        <th>Contents</th>
+                    </tr>
+                    <tr>
+                        <td><code>style.css</code></td>
+                        <td>CSS reset, design tokens, 12 theme palettes, all component styles (nebula, card, form,
+                            social, gear switcher)</td>
+                    </tr>
+                    <tr>
+                        <td><code>animations.css</code></td>
+                        <td>All <code>@keyframes</code> — nebula drift, orb float, geometry shapes, countdown flip, form
+                            shake, gear spin</td>
+                    </tr>
+                    <tr>
+                        <td><code>responsive.css</code></td>
+                        <td>All <code>@media</code> queries — mobile (≤480px), tablet (≤768px), 4K (≥2560px),
+                            reduced-motion</td>
+                    </tr>
+                </table>
+                <p>BEM naming convention is used throughout: <code>.block__element--modifier</code>.</p>
+            </section>
+
+            <!-- JAVASCRIPT -->
+            <section id="javascript">
+                <h2>JavaScript Modules</h2>
+                <p>All JavaScript uses Vanilla ES6+ wrapped in IIFEs — no frameworks, no build step.</p>
+                <table>
+                    <tr>
+                        <th>Module</th>
+                        <th>File</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Countdown</td>
+                        <td>countdown.js</td>
+                        <td>Reads <code>data-target-date</code>, updates digits every second with flip animation</td>
+                    </tr>
+                    <tr>
+                        <td>OrbInit</td>
+                        <td>main.js</td>
+                        <td>Assigns random duration/delay CSS vars to each orb and geometry element</td>
+                    </tr>
+                    <tr>
+                        <td>ParallaxField</td>
+                        <td>main.js</td>
+                        <td>Mouse-driven depth parallax using <code>requestAnimationFrame</code> + lerping. Skipped on
+                            touch-only devices.</td>
+                    </tr>
+                    <tr>
+                        <td>SubscribeForm</td>
+                        <td>main.js</td>
+                        <td>Client-side validation, loading state, AJAX API call, success/error feedback</td>
+                    </tr>
+                    <tr>
+                        <td>GearSwitcher</td>
+                        <td>main.js</td>
+                        <td>Opens/closes theme panel, highlights active page link</td>
+                    </tr>
+                    <tr>
+                        <td>CopyrightYear</td>
+                        <td>main.js</td>
+                        <td>Writes current year to <code>#copyrightYear</code></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- PERFORMANCE -->
+            <section id="performance">
+                <h2>Performance Notes</h2>
+                <ul>
+                    <li>All animations use only <strong>transform</strong> and <strong>opacity</strong> — GPU
+                        composited, no layout/paint triggers</li>
+                    <li><code>will-change: transform</code> is applied only to actively animated elements</li>
+                    <li>Mouse parallax uses <code>requestAnimationFrame</code> with linear interpolation (lerp) for
+                        silk-smooth 60fps</li>
+                    <li>Parallax is automatically <strong>disabled on touch-only devices</strong> (no mouse) and
+                        respects <code>prefers-reduced-motion</code></li>
+                    <li>Google Fonts loaded with <code>preconnect</code> hints for faster DNS resolution</li>
+                    <li>No JavaScript frameworks, no heavy libraries — total JS &lt; 18KB unminified</li>
+                </ul>
+            </section>
+
+            <!-- BROWSER SUPPORT -->
+            <section id="browser-support">
+                <h2>Browser Support</h2>
+                <table>
+                    <tr>
+                        <th>Browser</th>
+                        <th>Version</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Chrome / Edge</td>
+                        <td>90+</td>
+                        <td>✅ Full support</td>
+                    </tr>
+                    <tr>
+                        <td>Firefox</td>
+                        <td>88+</td>
+                        <td>✅ Full support</td>
+                    </tr>
+                    <tr>
+                        <td>Safari</td>
+                        <td>14+</td>
+                        <td>✅ Full support</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung Internet</td>
+                        <td>14+</td>
+                        <td>✅ Full support</td>
+                    </tr>
+                    <tr>
+                        <td>IE 11</td>
+                        <td>—</td>
+                        <td>❌ Not supported</td>
+                    </tr>
+                </table>
+                <p>The template uses CSS custom properties, <code>backdrop-filter</code>, CSS Grid, and ES6+ JS. For
+                    full glassmorphism effect, a Chromium-based browser is recommended.</p>
+            </section>
+
+            <!-- CREDITS -->
+            <section id="credits">
+                <h2>Credits</h2>
+                <table>
+                    <tr>
+                        <th>Resource</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td>Diamondz Technologiez</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td>
+                        <td>2.0.0</td>
+                    </tr>
+                    <tr>
+                        <td>Fonts</td>
+                        <td><a href="https://fonts.google.com/specimen/Inter" target="_blank">Inter</a> &amp; <a
+                                href="https://fonts.google.com/specimen/Montserrat" target="_blank">Montserrat</a> —
+                            Google Fonts (Open Font License)</td>
+                    </tr>
+                    <tr>
+                        <td>Icons</td>
+                        <td>Inline SVG — social icons are brand property of their respective owners</td>
+                    </tr>
+                    <tr>
+                        <td>Framework</td>
+                        <td>None — pure HTML5 / CSS3 / Vanilla JS</td>
+                    </tr>
+                </table>
+            </section>
+
+            <footer class="doc-footer">
+                <p>The Nebula v2.0.0 &mdash; Documentation &mdash; &copy;
+                    <script>document.write(new Date().getFullYear())</script> Diamondz Technologiez. All rights
+                    reserved.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+</body>
+
+</html>

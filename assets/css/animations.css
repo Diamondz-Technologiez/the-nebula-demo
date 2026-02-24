@@ -1,0 +1,253 @@
+/*
+ * ============================================================
+ *   THE NEBULA — Animations Stylesheet
+ *   Version  : 2.0.0
+ *   Author   : Diamondz Technologiez
+ *
+ *   Performance note:
+ *     All animations use ONLY transform & opacity — properties
+ *     composited on the GPU. This guarantees 60 FPS even with
+ *     multiple concurrent animations on mobile devices.
+ *
+ *   Sections:
+ *     01. Nebula Background Layer Drift
+ *     02. Anti-Gravity Orb Float
+ *     03. Anti-Gravity Geometry Float Variations
+ *     04. Countdown — Colon Pulse & Digit Flip
+ *     05. Form — Shake Error Animation
+ *     06. Gear Switcher — Gear Spin
+ * ============================================================
+ */
+
+/* =========================================
+   01. NEBULA BACKGROUND LAYER DRIFT
+   Four unique drift keyframes keep each layer
+   moving on its own path for a living nebula feel.
+   ========================================= */
+
+@keyframes nebulaDrift1 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate3d(4%, 2%, 0) scale(1.04) rotate(4deg);
+    }
+
+    66% {
+        transform: translate3d(-3%, 5%, 0) scale(0.98) rotate(-3deg);
+    }
+
+    100% {
+        transform: translate3d(2%, -3%, 0) scale(1.06) rotate(6deg);
+    }
+}
+
+@keyframes nebulaDrift2 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate3d(-5%, -3%, 0) scale(1.05) rotate(-5deg);
+    }
+
+    66% {
+        transform: translate3d(3%, -6%, 0) scale(1.02) rotate(3deg);
+    }
+
+    100% {
+        transform: translate3d(-2%, 4%, 0) scale(0.97) rotate(-7deg);
+    }
+}
+
+@keyframes nebulaDrift3 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(-4%, 3%, 0) scale(1.06) rotate(8deg);
+    }
+
+    100% {
+        transform: translate3d(5%, -4%, 0) scale(0.96) rotate(-5deg);
+    }
+}
+
+@keyframes nebulaDrift4 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(3%, -5%, 0) scale(1.08);
+    }
+
+    100% {
+        transform: translate3d(-4%, 2%, 0) scale(0.95);
+    }
+}
+
+/* =========================================
+   02. ANTI-GRAVITY ORB FLOAT
+   Orbs drift vertically with a subtle rotation.
+   JS assigns random --orb-duration & --orb-delay
+   per element so each orb drifts out of sync.
+   GPU-accelerated: only transform is animated.
+   ========================================= */
+
+@keyframes orbFloat {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(0, -28px, 0) rotate(6deg);
+    }
+
+    100% {
+        transform: translate3d(0, -16px, 0) rotate(-4deg);
+    }
+}
+
+/* =========================================
+   03. ANTI-GRAVITY GEOMETRY FLOAT VARIATIONS
+   Three distinct movement patterns keep the
+   geometric shapes visually varied.
+   ========================================= */
+
+/* Diamond — rotates while floating */
+@keyframes geoFloat1 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(45deg);
+        opacity: 0.50;
+    }
+
+    50% {
+        transform: translate3d(0, -22px, 0) rotate(52deg);
+        opacity: 0.70;
+    }
+
+    100% {
+        transform: translate3d(0, -10px, 0) rotate(40deg);
+        opacity: 0.55;
+    }
+}
+
+/* Rectangle / bar — gentle sway */
+@keyframes geoFloat2 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 0.40;
+    }
+
+    50% {
+        transform: translate3d(0, -18px, 0) rotate(5deg);
+        opacity: 0.60;
+    }
+
+    100% {
+        transform: translate3d(0, -8px, 0) rotate(-3deg);
+        opacity: 0.45;
+    }
+}
+
+/* Large diamond — deepest travel arc */
+@keyframes geoFloat3 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(30deg);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: translate3d(0, -24px, 0) rotate(38deg);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translate3d(0, -12px, 0) rotate(25deg);
+        opacity: 0.50;
+    }
+}
+
+/* =========================================
+   04. COUNTDOWN — COLON PULSE & DIGIT FLIP
+   ========================================= */
+
+/* Colon blink — two-state opacity cycle */
+@keyframes colonPulse {
+
+    0%,
+    100% {
+        opacity: 0.60;
+    }
+
+    50% {
+        opacity: 0.20;
+    }
+}
+
+/* Digit flip — scaleY collapse & expand on value change.
+   JS removes/re-adds the is-flipping class to retrigger. */
+@keyframes digitFlip {
+    0% {
+        transform: scaleY(1) translateY(0);
+    }
+
+    40% {
+        transform: scaleY(0) translateY(-4px);
+    }
+
+    60% {
+        transform: scaleY(0) translateY(4px);
+    }
+
+    100% {
+        transform: scaleY(1) translateY(0);
+    }
+}
+
+/* =========================================
+   05. FORM — SHAKE ERROR ANIMATION
+   Triggered by JS adding is-error class on invalid submission.
+   ========================================= */
+
+@keyframes formShake {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    15% {
+        transform: translate3d(-6px, 0, 0);
+    }
+
+    45% {
+        transform: translate3d(6px, 0, 0);
+    }
+
+    75% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* =========================================
+   06. GEAR SWITCHER — GEAR ICON SPIN
+   Infinite slow rotation applied when panel is open.
+   ========================================= */
+
+@keyframes gearSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
